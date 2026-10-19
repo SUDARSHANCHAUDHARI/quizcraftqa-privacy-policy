@@ -25,8 +25,8 @@
     <article>
       <h1>QuizCraftQA Privacy Policy</h1>
       <p><strong>Effective Date:</strong> May 17, 2026</p>
-      <p><em>Last updated: May 17, 2026</em></p>
-      <p><strong>Version:</strong> 1.1.0</p>
+      <p><em>Last updated: October 19, 2026</em></p>
+      <p><strong>Version:</strong> 1.2.0</p>
       <p>QuizCraftQA (&quot;we,&quot; &quot;our,&quot; or &quot;us&quot;) is a web app. QuizCraftQA is a browser-based ISTQB exam-prep and PDF-to-quiz tool that stores study data locally in the browser. This Privacy Policy explains what information the app collects, how it is used, and the choices you have. By installing or using QuizCraftQA you agree to the practices described below.</p>
       <h2>Information We Collect</h2>
       <h3>Location Data</h3>
@@ -82,8 +82,12 @@
       </ul>
       <h3>Third Parties</h3>
       <ul>
-      <li>No quiz/PDF content is shared with third parties by Sudarshan Tech Labs.</li>
-      <li>If a future optional AI feature is used, the app should ask before sending selected content to the chosen AI provider.</li>
+      <li>No quiz/PDF content is shared with third parties by Sudarshan Tech Labs, except through the optional AI endpoints described below when a build configures them and you use the feature.</li>
+      <li>AI Assistance is off by default. The &quot;Generate Study Plan&quot; and question-variant buttons appear only after you turn it on in Settings.</li>
+      <li><strong>Study plan:</strong> if the app build has a study-plan endpoint configured and you tap &quot;Generate Study Plan&quot;, the app sends one request to that endpoint with your overall accuracy, summaries of your last 5 quiz sessions (question count, accuracy, flagged question count and IDs, a random session ID and end time) and per-topic statistics (section titles and numbers taken from your PDFs, answer, correct and flagged counts, accuracy, confidence and difficulty counts, and syllabus reference links). Question text, your answers and PDF text are not included.</li>
+      <li><strong>Question variants:</strong> if the app build has a question-variant endpoint configured and you request a variant, the app sends that question&#39;s text, explanation, correct answer and a short passage from your PDF to that endpoint.</li>
+      <li>Requests are sent only when you tap the button. They carry no name, email, account or authorization header. If no endpoint is configured, no request is sent and the result is built on your device.</li>
+      <li>The endpoint is run by whoever configured that build, and that operator handles the data it receives. The standard QuizCraftQA build does not configure an AI endpoint.</li>
       </ul>
       <p>We do <strong>not</strong> share your data with:</p>
       <ul>
@@ -228,8 +232,12 @@
       </ul>
       <p>The app collects only the data needed for the features described in this policy, and local-first features keep data on your device whenever possible.</p>
       <hr>
-      <p><strong>Last Updated:</strong> May 17, 2026</p>
+      <p><strong>Last Updated:</strong> October 19, 2026</p>
       <hr>
+      <h2>Recent Updates (Version 1.2.0 - October 19, 2026)</h2>
+      <ul>
+      <li><strong>Described the optional AI study-plan and question-variant endpoints: when they are used and what they send.</strong></li>
+      </ul>
       <h2>Recent Updates (Version 1.1.0 - May 17, 2026)</h2>
       <ul>
       <li><strong>Aligned policy with the shared privacy-policy structure.</strong></li>
