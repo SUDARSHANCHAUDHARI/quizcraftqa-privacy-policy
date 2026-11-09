@@ -17,6 +17,7 @@
     a { color: var(--link); }
     hr { border: 0; border-top: 1px solid var(--border); margin: 2rem 0; }
     strong { font-weight: 700; }
+    code { font-family: ui-monospace, SFMono-Regular, Menlo, monospace; font-size: 0.95em; }
     @media (max-width: 640px) { article { padding: 20px; } main { padding: 20px 12px 48px; } }
   </style>
 </head>
@@ -25,9 +26,10 @@
     <article>
       <h1>QuizCraftQA Privacy Policy</h1>
       <p><strong>Effective Date:</strong> May 17, 2026</p>
-      <p><em>Last updated: October 19, 2026</em></p>
-      <p><strong>Version:</strong> 1.2.0</p>
+      <p><em>Last updated: November 9, 2026</em></p>
+      <p><strong>Version:</strong> 1.3.0</p>
       <p>QuizCraftQA (&quot;we,&quot; &quot;our,&quot; or &quot;us&quot;) is a web app. QuizCraftQA is a browser-based ISTQB exam-prep and PDF-to-quiz tool that stores study data locally in the browser. This Privacy Policy explains what information the app collects, how it is used, and the choices you have. By installing or using QuizCraftQA you agree to the practices described below.</p>
+
       <h2>Information We Collect</h2>
       <h3>Location Data</h3>
       <ul>
@@ -35,59 +37,67 @@
       </ul>
       <h3>Account Information</h3>
       <ul>
-      <li>No account is required to use QuizCraftQA.</li>
+      <li><strong>No account exists.</strong> There is no sign-up, no sign-in and no server of ours to sign in to.</li>
       </ul>
-      <h3>Device Information</h3>
+      <h3>Data Stored in Your Browser</h3>
       <ul>
-      <li>PDF text you import, generated quiz questions, study history, settings, and dashboard data may be stored locally in browser storage such as IndexedDB.</li>
+      <li>PDF text you import, generated quiz questions, your answer history and your settings are stored in your browser's IndexedDB, under three keys: <code>quizcraftqa-uploaded-pdfs</code>, <code>quizcraftqa-question-history</code> and <code>quizcraftqa-settings</code>.</li>
+      <li><strong>Your PDF is parsed on your device.</strong> The PDF reader (pdf.js) is bundled into the app and runs in a web worker in your browser. The file is never uploaded, not to us and not to anyone else.</li>
+      <li><strong>We receive none of it.</strong> There is no Sudarshan Tech Labs server for this app.</li>
       </ul>
+
       <h2>How We Use Your Information</h2>
       <h3>Location Sharing</h3>
       <ul>
       <li>QuizCraftQA does not use your location.</li>
       </ul>
-      <h3>Account Management</h3>
+      <h3>What the App Does</h3>
       <ul>
-      <li>Generate quizzes and study dashboards in your browser.</li>
-      <li>Persist study history locally so you can continue later.</li>
+      <li>Reads the PDFs you choose, extracts their text, and builds quizzes from it — all in your browser.</li>
+      <li>Keeps your question history and settings in browser storage so you can continue later.</li>
+      <li>Shows a dashboard of your accuracy and per-topic progress, computed on your device.</li>
       </ul>
       <h3>Service Improvement</h3>
       <ul>
-      <li>Improve local study workflows.</li>
-      <li>We do not operate a backend that receives your PDFs or study history.</li>
+      <li><strong>The app contains no analytics, no crash reporting and no tracking of any kind.</strong> No Google Analytics, no gtag, no tag manager, no third-party SDK.</li>
+      <li>There is a <strong>&quot;Telemetry&quot; toggle in Settings</strong>, and its name is misleading enough to be worth explaining: turning it on only starts an in-app event log you can read in the app yourself. It lives in memory, holds at most the last 200 events, is cleared when you turn the toggle off or reload the page, and <strong>is never written to storage or sent anywhere.</strong> Nothing reaches us whether it is on or off.</li>
+      <li>We do not sell, rent or monetize your study data. We never receive it in the first place.</li>
       </ul>
+
       <h2>Storage and Retention</h2>
       <h3>Data Storage</h3>
       <ul>
-      <li>PDF-derived content, quiz data, and history are stored locally in your browser using IndexedDB/local storage.</li>
-      <li>No Sudarshan Tech Labs server is used for core QuizCraftQA processing.</li>
+      <li>PDF-derived content, quiz history and settings are stored in your browser's IndexedDB on your own device.</li>
+      <li>The app is an installable progressive web app, so a service worker also caches the app's own files (HTML, scripts, styles, icons) for offline use. That cache holds the program, not your study data.</li>
+      <li>No Sudarshan Tech Labs server is used for any part of QuizCraftQA.</li>
       </ul>
       <h3>Data Retention</h3>
       <ul>
-      <li>Browser-local data remains until you delete it in the app, clear browser storage, or reset your browser profile.</li>
+      <li>Browser-local data remains until you delete it in the app, clear the site's storage, or reset your browser profile.</li>
+      <li>Clearing site data for this site removes both the IndexedDB study data and the service worker's cache of the app files.</li>
       </ul>
       <h3>Data Security</h3>
       <ul>
-      <li>Data is protected using platform security controls available on Android, the browser, Firebase, Google, GitHub, or other services named in this policy.</li>
-      <li>Local data remains on your device or browser unless a feature you use requires a named third-party service.</li>
-      <li>Network communication uses HTTPS/TLS where applicable.</li>
-      <li>You should protect your device, browser profile, and Google/GitHub accounts with strong authentication.</li>
+      <li>Your study data sits in your browser's own storage for this site, protected by the browser's same-origin policy: another website cannot read it. The app adds no encryption of its own, so anyone with access to your unlocked browser profile can read it.</li>
+      <li>The published app is served over HTTPS by GitHub Pages.</li>
+      <li><strong>In the published build the app makes no network request at all once loaded.</strong> The optional AI endpoints described below are configured at build time and are not configured in the published build.</li>
+      <li>You should protect your device with a screen lock and your browser profile with a password, since those are what stand between someone else and your study data.</li>
       </ul>
+
       <h2>Data Sharing</h2>
-      <h3>Family Groups</h3>
+      <h3>Sharing With Other People</h3>
       <ul>
-      <li>QuizCraftQA does not use family groups unless explicitly described in this policy.</li>
-      <li>If this app includes pairing, sharing, or collaboration features, data is shared only with the people or services required for the feature you choose.</li>
-      <li>You control feature use through the app settings, permissions, account controls, or platform settings.</li>
+      <li><strong>QuizCraftQA has no accounts, no pairing, no sharing and no collaboration features.</strong> There is nobody to share with and no way to.</li>
       </ul>
       <h3>Third Parties</h3>
       <ul>
       <li>No quiz/PDF content is shared with third parties by Sudarshan Tech Labs, except through the optional AI endpoints described below when a build configures them and you use the feature.</li>
       <li>AI Assistance is off by default. The &quot;Generate Study Plan&quot; and question-variant buttons appear only after you turn it on in Settings.</li>
       <li><strong>Study plan:</strong> if the app build has a study-plan endpoint configured and you tap &quot;Generate Study Plan&quot;, the app sends one request to that endpoint with your overall accuracy, summaries of your last 5 quiz sessions (question count, accuracy, flagged question count and IDs, a random session ID and end time) and per-topic statistics (section titles and numbers taken from your PDFs, answer, correct and flagged counts, accuracy, confidence and difficulty counts, and syllabus reference links). Question text, your answers and PDF text are not included.</li>
-      <li><strong>Question variants:</strong> if the app build has a question-variant endpoint configured and you request a variant, the app sends that question&#39;s text, explanation, correct answer and a short passage from your PDF to that endpoint.</li>
+      <li><strong>Question variants:</strong> if the app build has a question-variant endpoint configured and you request a variant, the app sends that question's text, explanation, correct answer and a short passage from your PDF to that endpoint.</li>
       <li>Requests are sent only when you tap the button. They carry no name, email, account or authorization header. If no endpoint is configured, no request is sent and the result is built on your device.</li>
-      <li>The endpoint is run by whoever configured that build, and that operator handles the data it receives. The standard QuizCraftQA build does not configure an AI endpoint.</li>
+      <li>The endpoint is run by whoever configured that build, and that operator handles the data it receives. <strong>The published QuizCraftQA build configures neither endpoint</strong>, so in the version at the project's own URL both features fall back to results computed on your device and no request leaves your browser.</li>
+      <li>Links in the app to istqb.org and to the project's GitHub pages open in your browser and are requests you chose to make, the same as any other link.</li>
       </ul>
       <p>We do <strong>not</strong> share your data with:</p>
       <ul>
@@ -95,16 +105,19 @@
       <li>Unrelated advertising networks, unless advertising is explicitly listed above for this app</li>
       <li>Third parties unrelated to the app features described in this policy</li>
       </ul>
+
       <h2>Permissions Used</h2>
       <h3>Required Permissions</h3>
       <ul>
-      <li><strong>Browser storage</strong>: Used to save local study history and quiz data.</li>
-      <li><strong>Local file/PDF access through the browser file picker</strong>: Used only for files you choose.</li>
+      <li><strong>Browser storage</strong>: Used to save your local study history, imported PDF text and settings in IndexedDB.</li>
+      <li><strong>Local file/PDF access through the browser file picker</strong>: Used only for the files you pick, and only to read them in your browser.</li>
       </ul>
+      <p>QuizCraftQA is a web app. It asks for no browser permission prompts — no camera, microphone, location or notifications — and it is not an Android app, so it has no Android permissions.</p>
       <h3>Optional Permissions</h3>
       <ul>
-      <li>File import and browser storage can be cleared or avoided by using a private/temporary browser session.</li>
+      <li>Installing the app to your home screen, and importing a PDF, are both optional. Using a private or temporary browser window keeps nothing after you close it.</li>
       </ul>
+
       <h2>Your Rights and Controls</h2>
       <h3>Location Sharing Control</h3>
       <ul>
@@ -112,11 +125,11 @@
       </ul>
       <h3>Account Management</h3>
       <ul>
-      <li>No account is required.</li>
+      <li>There is no account to manage.</li>
       </ul>
       <h3>Data Access</h3>
       <ul>
-      <li>You can clear app data through the app, browser site settings, or browser storage controls.</li>
+      <li>Everything the app stores is in your own browser, under your control, and can be cleared from the app or from your browser's site settings at any time.</li>
       </ul>
       <h3>GDPR Rights (EU Users)</h3>
       <p>If you are in the European Union, you have additional rights:</p>
@@ -128,28 +141,30 @@
       <li><strong>Right to Data Portability</strong>: Receive your data in a portable format</li>
       <li><strong>Right to Object</strong>: Object to certain types of processing</li>
       </ul>
-      <p>To exercise these rights, contact us using the methods in the Contact Us section.</p>
-      <h3>Permissions</h3>
+      <p>In practice we hold no personal data about you to access, correct or erase, because the app sends us nothing. To exercise these rights anyway, contact us using the methods in the Contact Us section.</p>
+      <h3>Clearing Browser Storage</h3>
       <ul>
-      <li>You can revoke Android permissions in Android Settings -&gt; Apps -&gt; QuizCraftQA -&gt; Permissions.</li>
-      <li>Browser permissions and storage can be managed in your browser site settings for web apps.</li>
-      <li>Revoking required permissions may prevent related features from functioning.</li>
+      <li>Clear the site's data in your browser's site settings to remove the IndexedDB study data and the cached app files in one step.</li>
+      <li>Uninstalling the installed app, or closing a private window, has the same effect for that profile.</li>
       </ul>
+
       <h2>Children&#39;s Privacy</h2>
       <ul>
       <li>Our app is <strong>not intended for children under 13</strong>.</li>
       <li>We do not knowingly collect data from children under 13.</li>
       <li>If you are a parent or guardian and believe your child has provided personal information, please contact us to request deletion.</li>
-      <li>Parents and guardians should supervise children&#39;s use of apps that store personal content.</li>
+      <li>Parents and guardians should supervise children's use of apps that store personal content.</li>
       </ul>
+
       <h2>Security</h2>
       <ul>
-      <li>Local data is protected by Android, browser, or operating-system app sandboxing.</li>
-      <li>Network communication uses HTTPS/TLS where applicable.</li>
+      <li>Local data is protected by your browser's same-origin policy and your operating system's own access controls. QuizCraftQA adds no encryption of its own.</li>
+      <li>The published app is served over HTTPS and, once loaded, makes no network request.</li>
       <li>Third-party services named in this policy provide their own security controls and privacy policies.</li>
-      <li>You are responsible for protecting your device, browser profile, and account credentials.</li>
-      <li>We do not sell your personal data.</li>
+      <li>You are responsible for protecting your device and your browser profile.</li>
+      <li>We do not sell your personal data. We never receive it.</li>
       </ul>
+
       <h2>Changes to This Policy</h2>
       <p>We may update this Privacy Policy to reflect new features, legal requirements, or changes in our practices. Significant changes will be:</p>
       <ul>
@@ -158,6 +173,7 @@
       <li>Communicated in the app or project page if the change is significant</li>
       </ul>
       <p>The &quot;Last updated&quot; date at the top of this policy indicates when revisions occurred. Continued use of the app after changes constitutes acceptance of the updated policy.</p>
+
       <h2>Contact Us</h2>
       <p>If you have questions about this Privacy Policy, wish to request data deletion, or have privacy concerns:</p>
       <ul>
@@ -166,78 +182,81 @@
       <li><strong>Main App Repository:</strong> https://github.com/SUDARSHANCHAUDHARI/QuizCraftQA</li>
       </ul>
       <p>We will respond as quickly as possible, typically within 48 hours.</p>
+
       <h2>Data Deletion</h2>
       <h3>How to Delete Your Account</h3>
-      <p>This app does not require an account. You can delete local app data using the options below:</p>
+      <p>There is no account. Everything the app keeps is in your own browser, so deletion is something you do yourself:</p>
       <h4>Option 1: In-App Deletion</h4>
       <ol>
       <li>Open QuizCraftQA</li>
-      <li>Delete individual entries, reminders, history, or settings where the app provides controls</li>
-      <li>Or use Android/browser settings to clear app/site data</li>
-      <li>Uninstalling the app also removes local app-private data</li>
+      <li>Remove imported PDFs, history entries or settings where the app provides controls</li>
+      <li>Turning the Telemetry toggle off clears the in-app event log immediately</li>
       </ol>
-      <h4>Option 2: Email Deletion Request</h4>
+      <h4>Option 2: Clear the Site's Browser Storage</h4>
+      <ol>
+      <li>Open your browser's site settings for the QuizCraftQA page</li>
+      <li>Clear the site's data, which removes the IndexedDB keys <code>quizcraftqa-uploaded-pdfs</code>, <code>quizcraftqa-question-history</code> and <code>quizcraftqa-settings</code> and the cached app files</li>
+      <li>If you installed the app to your home screen, uninstalling it removes its storage for that profile</li>
+      </ol>
+      <h4>Option 3: Email Deletion Request</h4>
       <p>Send an email to: <strong>support@sudarshantechlabs.com</strong> or <strong>sunny.sudarshan@gmail.com</strong></p>
       <ul>
       <li>Subject: &quot;Data Deletion Request - QuizCraftQA&quot;</li>
-      <li>Include: The email/account identifier used in the app, if any</li>
-      <li>We will process deletion requests as quickly as possible, typically within 48 hours for acknowledgement</li>
+      <li>We will answer honestly that we hold nothing of yours, because the app sends us nothing, and confirm that in writing if you need it for a record</li>
       </ul>
-      <h4>Option 3: Web Deletion</h4>
-      <ol>
-      <li>Visit the privacy policy website for contact and support information</li>
-      <li>For browser apps, clear browser storage for the site</li>
-      <li>For Android apps, clear storage from Android Settings if you want a full local reset</li>
-      </ol>
       <h3>What Gets Deleted</h3>
       <ul>
-      <li>Local app data stored by the app</li>
-      <li>Local preferences and reminder/history records</li>
-      <li>Cached data controlled by the app or browser</li>
-      <li>Exported/shared files only if you delete them from where you saved them</li>
+      <li>The three IndexedDB keys above: imported PDF text, question history and settings</li>
+      <li>The service worker's cache of the app's own files</li>
+      <li>Nothing on our side, because there is nothing on our side</li>
       </ul>
       <h3>Data Retention After Deletion</h3>
       <ul>
-      <li><strong>Immediate:</strong> clearing app/site data removes local app-private data from your device/browser</li>
-      <li><strong>Uninstall:</strong> removes app-private local data from Android apps</li>
-      <li><strong>Exports/shared files:</strong> remain wherever you saved or sent them until you delete them</li>
+      <li><strong>Immediate:</strong> clearing the site's data removes all of it at once</li>
+      <li><strong>Private window:</strong> nothing survives closing it</li>
+      <li><strong>AI requests already sent:</strong> if a build you used had an AI endpoint configured, whatever it received is held by that endpoint's operator, not by us, so a deletion request for it goes to them</li>
       </ul>
-      <p>To request deletion of your data:</p>
-      <ol>
-      <li>Open QuizCraftQA, if installed</li>
-      <li>Delete local content or clear app/site data where applicable</li>
-      <li>Contact support via email: sunny.sudarshan@gmail.com</li>
-      <li>Request account/data deletion and include enough detail for us to identify the app and any account, if one exists</li>
-      <li>We will confirm what data can be deleted and complete the request according to the retention terms above</li>
-      </ol>
-      <h2>Firebase and Google Services</h2>
-      <p>This app may use the following services depending on the features you enable and the installed version:</p>
+
+      <h2>Third-Party Services</h2>
+      <p><strong>QuizCraftQA uses none in its published build.</strong> No Firebase, no Google service, no analytics, no advertising, no crash reporting and no backend of ours. The app's PDF reader and charts are bundled into the page rather than loaded from a CDN, so no third party sees a request when you open it.</p>
+      <p>Earlier versions of this policy named Firebase as a security control protecting your data and linked the Firebase, Google and Google Play privacy policies. <strong>There is no Firebase and no Google service in this app</strong> — the string appears nowhere in its source. Those claims were wrong and have been removed.</p>
+      <p>A build that someone configures with an AI endpoint would add that endpoint's operator as a third party; the published build configures none.</p>
+      <p>The only third-party policy with any bearing on the published app is GitHub's, because GitHub Pages serves it:</p>
       <ul>
-      <li>No third-party cloud service is required for core QuizCraftQA use.</li>
-      </ul>
-      <p>Please review relevant third-party privacy policies:</p>
-      <ul>
-      <li><a href="https://policies.google.com/privacy">Google Privacy Policy</a></li>
-      <li><a href="https://firebase.google.com/support/privacy">Firebase Privacy Policy</a></li>
-      <li><a href="https://play.google.com/about/play-terms/">Google Play Terms</a></li>
       <li><a href="https://docs.github.com/en/site-policy/privacy-policies/github-privacy-statement">GitHub Privacy Statement</a></li>
       </ul>
+
       <h2>About QuizCraftQA</h2>
       <p>QuizCraftQA is built with privacy in mind. The app is built with:</p>
       <ul>
-      <li>Browser-based QA study tooling</li>
-      <li>PDF import and quiz generation</li>
-      <li>IndexedDB/local browser storage</li>
-      <li>Static app deployment</li>
+      <li>React and Vite, as a static site served by GitHub Pages</li>
+      <li>pdf.js, bundled and run in a web worker in your browser, for reading your PDFs</li>
+      <li>IndexedDB for your study data, through idb-keyval</li>
+      <li>An installable progressive web app shell, so it works offline</li>
+      <li>Optional AI endpoints, configured at build time and configured in no published build</li>
       </ul>
-      <p>The app collects only the data needed for the features described in this policy, and local-first features keep data on your device whenever possible.</p>
+      <p>Your PDFs and your answers stay in your browser. In the published build nothing leaves it at all.</p>
+
       <hr>
-      <p><strong>Last Updated:</strong> October 19, 2026</p>
+      <p><strong>Last Updated:</strong> November 9, 2026</p>
       <hr>
+
+      <h2>Recent Updates (Version 1.3.0 - November 9, 2026)</h2>
+      <ul>
+      <li><strong>Removed the false Firebase claims.</strong> The policy said your data was &quot;protected using platform security controls available on Android, the browser, Firebase, Google, GitHub, or other services&quot;, titled a section &quot;Firebase and Google Services&quot;, and linked the Firebase, Google and Google Play privacy policies. There is no Firebase and no Google service in this app; the string appears nowhere in its source. Naming a service the app does not use is wrong even when it sounds reassuring.</li>
+      <li><strong>Removed the Android scaffold.</strong> QuizCraftQA is a web app. The policy told you to revoke permissions in &quot;Android Settings -&gt; Apps -&gt; QuizCraftQA&quot;, described Android app sandboxing as protecting your data, and gave Android uninstall steps. None of it applied.</li>
+      <li><strong>Explained the &quot;Telemetry&quot; toggle in Settings</strong>, which this policy had never mentioned. It starts an in-app event log you can read yourself: in memory, at most 200 entries, cleared on toggle-off or reload, never stored and never sent anywhere. A setting with that name deserves an explanation in the privacy policy rather than silence.</li>
+      <li><strong>Said the published build configures no AI endpoint</strong>, so both AI features fall back to results computed on your device and the published app makes no network request once loaded. The previous wording — &quot;the standard QuizCraftQA build does not configure an AI endpoint&quot; — was true but vaguer than it needed to be.</li>
+      <li><strong>Named the three IndexedDB keys</strong> the app writes (<code>quizcraftqa-uploaded-pdfs</code>, <code>quizcraftqa-question-history</code>, <code>quizcraftqa-settings</code>) so the deletion instructions name real things, and said the PDF reader runs in a web worker on your device, which is why your file is never uploaded.</li>
+      <li><strong>Disclosed the service worker.</strong> The app is an installable progressive web app and caches its own files for offline use. That cache holds the program, not your study data, and clearing site data removes both.</li>
+      <li><strong>Dropped the &quot;Family Groups&quot; heading</strong>, scaffold shared with sibling policies, for an app with no sharing of any kind.</li>
+      </ul>
+
       <h2>Recent Updates (Version 1.2.0 - October 19, 2026)</h2>
       <ul>
       <li><strong>Described the optional AI study-plan and question-variant endpoints: when they are used and what they send.</strong></li>
       </ul>
+
       <h2>Recent Updates (Version 1.1.0 - May 17, 2026)</h2>
       <ul>
       <li><strong>Aligned policy with the shared privacy-policy structure.</strong></li>
